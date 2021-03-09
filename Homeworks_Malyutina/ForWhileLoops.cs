@@ -162,14 +162,16 @@ namespace Homeworks_Malyutina
             //5) Если она равняется искомому => мы нашли число
             //6) Повторяем пока подмассив не пустой
 
+            if (a < 0)
+            {
+                throw new Exception("Invalid input");
+            }
+
             int left = 0;
             int right = a;
             int n = a / 2;
-            //double delta = 0.00001;
 
-            //while (!(a <= Math.Pow(n, 3) + delta &&
-            //    a >= Math.Pow(n, 3) - delta))
-            while (n * n * n != a) //-будет долго считать для больших чисел
+            while (n * n * n != a) 
             {
                 if (n * n * n > a)
                 {
@@ -246,7 +248,7 @@ namespace Homeworks_Malyutina
             return reversed;
         }
 
-        public static string[] Task11(int a)
+        public static int[] Task11(int a)
         {
             //Пользователь вводит целое положительное  число (N). Выведите числа в диапазоне от 1 до N, 
             //сумма четных цифр которых больше суммы нечетных. 
@@ -283,10 +285,9 @@ namespace Homeworks_Malyutina
                 }
             }
 
-            //int[] resultInts = Array.ConvertAll(result.Split(" "), int.Parse);
-            string []resultArray = result.Split(" ");
+            int[] resultInts = Array.ConvertAll(result.Remove(result.Length - 1, 1).Split(" "), int.Parse);
 
-            return resultArray;
+            return resultInts;
         }
 
         public static string Task12(int a, int b)

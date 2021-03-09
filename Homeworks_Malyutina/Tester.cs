@@ -6,12 +6,23 @@ namespace Homeworks_Malyutina
     {
         static void Main(string[] args) 
         {
-            Console.WriteLine(ForWhileLoops.Task12(-202, 101));
+            int[] array = CreateArray();
+            Console.WriteLine(Arrays.Task1(array));
+
 
 
         }
-
-
+        public static int[] CreateArray()
+        {
+            int[] array = new int[10];
+            Random rand = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = rand.Next(10, 31);
+            }
+            PrintOutArray(array);
+            return array;
+        }
 
         public static void PrintOutArray<T>(T[] array)
         {
@@ -21,6 +32,22 @@ namespace Homeworks_Malyutina
             }
             Console.WriteLine();
         }
+
+        public static int[,] Create2DArray()
+        {
+            int[,] array = new int[2, 4];
+            Random rand = new Random();
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = rand.Next(10, 99);
+                }
+            }
+            PrintOut2DArray(array);
+            return array;
+        }
+        
 
         public static void PrintOut2DArray<T>(T[,] array)
         {

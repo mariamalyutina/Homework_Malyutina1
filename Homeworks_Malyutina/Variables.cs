@@ -54,7 +54,7 @@ namespace Homeworks_Malyutina
             //Выведите уравнение прямой в формате Y=AX+B, проходящей через эти точки.
             if (x2 == x1)
             {
-                throw new DivideByZeroException();
+                throw new Exception("Invalid input");
             }
             double a = (y2 - y1) / (x2 - x1);
             double b = y1 - ((y2 - y1) / (x2 - x1)) * x1;

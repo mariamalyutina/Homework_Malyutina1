@@ -7,10 +7,9 @@ namespace Homeworks_Malyutina
     class Arrays
     {
         
-        public static int Task1()
+        public static int Task1(int[] array)
         {
             //Найти минимальный элемент массива
-            int[] array = CreateArray();
             int min = array[0];
             for (int i = 1; i < array.Length; i++)
             {
@@ -22,10 +21,9 @@ namespace Homeworks_Malyutina
             return min;
         }
 
-        public static int Task2()
+        public static int Task2(int[] array)
         {
             //Найти максимальный элемент массива
-            int[] array = CreateArray();
             int max = array[0];
             for (int i = 1; i < array.Length; i++)
             {
@@ -37,10 +35,9 @@ namespace Homeworks_Malyutina
             return max;
         }
 
-        public static int Task3()
+        public static int Task3(int[] array)
         {
             //Найти индекс минимального элемента массива
-            int[] array = CreateArray();
             int min = array[0];
             int minIndex = array[0];
             for (int i = 1; i < array.Length; i++)
@@ -54,10 +51,9 @@ namespace Homeworks_Malyutina
             return minIndex;
         }
 
-        public static int Task4()
+        public static int Task4(int[] array)
         {
             //Найти индекс максимального элемента массива
-            int[] array = CreateArray();
             int max = array[0];
             int maxIndex = array[0];
             for (int i = 1; i < array.Length; i++)
@@ -71,10 +67,9 @@ namespace Homeworks_Malyutina
             return maxIndex;
         }
 
-        public static int Task5()
+        public static int Task5(int[] array)
         {
             //Посчитать сумму элементов массива с нечетными индексами
-            int[] array = CreateArray();
 
             int sum = 0;
             for (int i = 0; i < array.Length; i++)
@@ -87,10 +82,9 @@ namespace Homeworks_Malyutina
             return sum;
         }
 
-        public static int[] Task6()
+        public static int[] Task6(int[] array)
         {
             //Сделать реверс массива (массив в обратном направлении)
-            int[] array = CreateArray();
 
             for (int i = 0; i < array.Length / 2; i++)
             {
@@ -101,10 +95,9 @@ namespace Homeworks_Malyutina
             return array;
         }
 
-        public static int Task7()
+        public static int Task7(int[] array)
         {
             //Посчитать количество нечетных элементов массива
-            int[] array = CreateArray();
             int oddCount = 0;
             for (int i = 0; i < array.Length; i++)
             {
@@ -116,12 +109,11 @@ namespace Homeworks_Malyutina
             return oddCount;
         }
 
-        public static int[] Task8()
+        public static int[] Task8(int[] array)
         {
             //Поменять местами первую и вторую половину массива, например, для массива 1 2 3 4, 
             //результат 3 4 1 2,  или для 12345 - 45312.
 
-            int[] array = CreateArray();
             int step = array.Length % 2 == 0 ? array.Length / 2 : array.Length / 2 + 1;
 
             for (int i = 0; i < array.Length / 2; i++)
@@ -134,14 +126,12 @@ namespace Homeworks_Malyutina
             return array;
         }
 
-        public static int[] Task9()
+        public static int[] Task9(int[] array)
         {
             //Отсортировать массив по возрастанию выбором(Select) 
             //Идея: сначала перебрать все элементы и найти индекс наименьшего, затем поместить его в самое начало.
             //На след итерации искать индекс наименьшего без учета первого элемента. Поместить его на второе место и т.д.
             //На каждой итерации индекс минимального элемента - это первый элемент из оставшихся неотсортированных
-
-            int[] array = CreateArray();
 
             for (int i = 0; i < array.Length - 1; i++)
             {
@@ -160,15 +150,12 @@ namespace Homeworks_Malyutina
             return array;
         }
 
-        public static int[] Task10()
+        public static int[] Task10(int[] array)
         {
             //Отсортировать массив по убыванию вставками(Insert) 
             //Идея: отсортировать первый и второй элементы. Сравнить третий с каждым из первых двух последовательно, 
             //вставить его на нужное место. Сравнить четвертый последовательно с тремя предыдущими и вставить на место и т.д.
             
-
-            int[] array = CreateArray();
-
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = i + 1; j > 0; j--)
@@ -186,17 +173,6 @@ namespace Homeworks_Malyutina
 
         }
 
-        private static int[] CreateArray()
-        {
-            int[] array = new int[10];
-            Random rand = new Random();
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = rand.Next(10, 31);
-                Console.Write(array[i] + " ");
-            }
-            Console.WriteLine();
-            return array;
-        }
+        
     }
 }

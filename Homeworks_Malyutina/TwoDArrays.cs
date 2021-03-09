@@ -6,10 +6,9 @@ namespace Homeworks_Malyutina
 {
     class TwoDArrays
     {
-        public static int Task1()
+        public static int Task1(int[,] array)
         {
             //Найти минимальный элемент массива
-            int[,] array = Create2DArray();
             int min = array[0,0];
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -25,10 +24,9 @@ namespace Homeworks_Malyutina
             return min;
         }
 
-        public static int Task2()
+        public static int Task2(int[,] array)
         {
             //Найти максимальный элемент массива
-            int[,] array = Create2DArray();
             int max = array[0, 0];
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -44,10 +42,9 @@ namespace Homeworks_Malyutina
             return max;
         }
 
-        public static int[] Task3()
+        public static int[] Task3(int[,] array)
         {
             //Найти индекс минимального элемента массива
-            int[,] array = Create2DArray();
             int min = array[0, 0];
             int[] minIndex = new int[] { 0, 0 };
             for (int i = 0; i < array.GetLength(0); i++)
@@ -66,10 +63,9 @@ namespace Homeworks_Malyutina
             return minIndex;
         }
 
-        public static int[] Task4()
+        public static int[] Task4(int[,] array)
         {
             //Найти индекс максимального элемента массива
-            int[,] array = Create2DArray();
             int max = array[0, 0];
             int[] maxIndex = new int[] { 0, 0 };
             for (int i = 0; i < array.GetLength(0); i++)
@@ -88,11 +84,10 @@ namespace Homeworks_Malyutina
             return maxIndex;
         }
 
-        public static int Task5()
+        public static int Task5(int[,] array)
         {
             //Найти количество элементов массива, которые больше всех своих соседей одновременно
 
-            int[,] array = Create2DArray();
             int count = 0;
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -103,13 +98,10 @@ namespace Homeworks_Malyutina
                     {
                         for (int b = j - 1; b <= j + 1; b++)
                         {
-                            if (isValidCell(array, a, b))
+                            if (isValidCell(array, a, b) && array[i, j] < array[a, b])
                             {
-                                if (array[i, j] < array[a, b])
-                                {
-                                    isBigger = false;
-                                    continue;
-                                }
+                                isBigger = false;
+                                continue;
                             }
                         }
                     }
@@ -132,10 +124,35 @@ namespace Homeworks_Malyutina
             return false;
         }
 
-        public static int[,] Task6()
+        public static int Task5_2(int[,] array)
+        {
+            //Найти количество элементов массива, которые больше всех своих соседей одновременно
+
+            int count = 0;
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if ((i <= 0 || array[i, j] > array[i - 1, j])
+                        && (j <= 0 || array[i, j] > array[i, j - 1])
+                        && (i >= array.GetLength(0) - 1|| array[i, j] > array[i + 1, j])
+                        && (j >= array.GetLength(1) - 1 || array[i, j] > array[i, j + 1])
+                        //&& ((i <= 0 && j <= 0) || (array[i, j] > array[i - 1, j - 1]))
+                        //&& ((i >= array.GetLength(0) - 1 && j <= 0) || (array[i, j] > array[i + 1, j - 1]))
+                        //&& ((i <= 0 && j >= array.GetLength(1) - 1) || (array[i, j] > array[i - 1, j + 1]))
+                        //&& ((i >= array.GetLength(0) - 1 && j >= array.GetLength(1) - 1) || (array[i, j] > array[i + 1, j + 1]))
+                        )
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        public static int[,] Task6(int[,] array)
         {
             //Отразите массив относительно его главной диагонали
-            int[,] array = Create2DArray();
             int[,] reversedArray = new int[array.GetLength(1), array.GetLength(0)];
 
             for (int i = 0; i < array.GetLength(0); i++)
@@ -146,21 +163,6 @@ namespace Homeworks_Malyutina
             return reversedArray;
         }
 
-        private static int[,] Create2DArray()
-        {
-            int[,] array = new int[2,4];
-            Random rand = new Random();
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    array[i, j] = rand.Next(10,99);
-                    Console.Write(array[i,j] + " ");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-            return array;
-        }
+
     }
 }
