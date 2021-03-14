@@ -11,18 +11,17 @@ namespace Homeworks_Malyutina
             //Пользователь вводит 2 числа (A и B). Выведите в консоль решение 5*A+B^2/B-A
             if (b == a)
             {
-                throw new DivideByZeroException();
+                throw new ArgumentException("Invalid input");
             }
             return (5.0 * a + b * b) / (b - a);
         }
 
-        public static string Task2(int a, int b)
+        public static void Task2(ref int a, ref int b)
         {
             //Пользователь вводит 2 значения(A и B). Поменяйте содержимое переменных A и B местами.
             int temp = a;
             a = b;
             b = temp;
-            return $"Стало: A = {a}, B = {b}";
         }
 
         public static double[] Task3(int a, int b)
@@ -32,7 +31,7 @@ namespace Homeworks_Malyutina
             {
                 throw new DivideByZeroException();
             }
-            double division = a / b;
+            double division = (double) a / b;
             double remainder = a % b;
             return new double[] { division, remainder};
         }
@@ -43,29 +42,35 @@ namespace Homeworks_Malyutina
             //стандартного вида, где A*X+B=C.
             if (a == 0)
             {
-                throw new DivideByZeroException();
+                throw new ArgumentException("Invalid input");
             }
-            return (c - b) / a;
+            return (double) (c - b) / a;
         }
 
-        public static string Task5(int x1, int y1, int x2, int y2)
+        public static string Task5(double x1, double y1, double x2, double y2)
         {
             //Пользователь вводит 4 числа (X1, Y1, X2, Y2), описывающие координаты 2-х точек на координатной плоскости. 
             //Выведите уравнение прямой в формате Y=AX+B, проходящей через эти точки.
             if (x2 == x1)
             {
-                throw new Exception("Invalid input");
+                if (y2 == y1)
+                {
+                    throw new ArgumentException("Points with same coordinates");
+                } else
+                {
+                    throw new ArgumentException("Invalid input");
+                }
             }
-            double a = (y2 - y1) / (x2 - x1);
+            double a = (y2 - y1) / (x2 - x1); //почему-то возвращает -0 (если 0 делится на отриц число)
             double b = y1 - ((y2 - y1) / (x2 - x1)) * x1;
             if (b < 0)
             {
                 return $"Уравнение прямой: У = {a}*X - {Math.Abs(b)}";
             }
-            else
+            else 
             {
                 return $"Уравнение прямой: У = {a}*X + {b}";
-            }
+            } 
         }
     }
 }

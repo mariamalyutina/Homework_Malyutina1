@@ -4,11 +4,15 @@ using System.Text;
 
 namespace Homeworks_Malyutina
 {
-    class TwoDArrays
+    public static class TwoDArrays
     {
         public static int Task1(int[,] array)
         {
             //Найти минимальный элемент массива
+            if (array.GetLength(0) == 0 && array.GetLength(1) == 0)
+            {
+                throw new ArgumentException("Array is empty");
+            }
             int min = array[0,0];
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -27,6 +31,10 @@ namespace Homeworks_Malyutina
         public static int Task2(int[,] array)
         {
             //Найти максимальный элемент массива
+            if (array.GetLength(0) == 0 && array.GetLength(1) == 0)
+            {
+                throw new ArgumentException("Array is empty");
+            }
             int max = array[0, 0];
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -45,6 +53,10 @@ namespace Homeworks_Malyutina
         public static int[] Task3(int[,] array)
         {
             //Найти индекс минимального элемента массива
+            if (array.GetLength(0) == 0 && array.GetLength(1) == 0)
+            {
+                throw new ArgumentException("Array is empty");
+            }
             int min = array[0, 0];
             int[] minIndex = new int[] { 0, 0 };
             for (int i = 0; i < array.GetLength(0); i++)
@@ -66,6 +78,10 @@ namespace Homeworks_Malyutina
         public static int[] Task4(int[,] array)
         {
             //Найти индекс максимального элемента массива
+            if (array.GetLength(0) == 0 && array.GetLength(1) == 0)
+            {
+                throw new ArgumentException("Array is empty");
+            }
             int max = array[0, 0];
             int[] maxIndex = new int[] { 0, 0 };
             for (int i = 0; i < array.GetLength(0); i++)
@@ -88,45 +104,6 @@ namespace Homeworks_Malyutina
         {
             //Найти количество элементов массива, которые больше всех своих соседей одновременно
 
-            int count = 0;
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    bool isBigger = true;
-                    for (int a = i - 1; a <= i + 1; a++)
-                    {
-                        for (int b = j - 1; b <= j + 1; b++)
-                        {
-                            if (isValidCell(array, a, b) && array[i, j] < array[a, b])
-                            {
-                                isBigger = false;
-                                continue;
-                            }
-                        }
-                    }
-                    if (isBigger)
-                    {
-                        count++;
-                    }
-                }
-            }
-            return count;
-        }
-
-        private static bool isValidCell(int[,] array, int a, int b)
-        {
-            if (a >= 0 && b >= 0)
-            {
-                if (a < array.GetLength(0) && b < array.GetLength(1))
-                    return true;
-            }
-            return false;
-        }
-
-        public static int Task5_2(int[,] array)
-        {
-            //Найти количество элементов массива, которые больше всех своих соседей одновременно
 
             int count = 0;
             for (int i = 0; i < array.GetLength(0); i++)
@@ -137,10 +114,10 @@ namespace Homeworks_Malyutina
                         && (j <= 0 || array[i, j] > array[i, j - 1])
                         && (i >= array.GetLength(0) - 1|| array[i, j] > array[i + 1, j])
                         && (j >= array.GetLength(1) - 1 || array[i, j] > array[i, j + 1])
-                        //&& ((i <= 0 && j <= 0) || (array[i, j] > array[i - 1, j - 1]))
-                        //&& ((i >= array.GetLength(0) - 1 && j <= 0) || (array[i, j] > array[i + 1, j - 1]))
-                        //&& ((i <= 0 && j >= array.GetLength(1) - 1) || (array[i, j] > array[i - 1, j + 1]))
-                        //&& ((i >= array.GetLength(0) - 1 && j >= array.GetLength(1) - 1) || (array[i, j] > array[i + 1, j + 1]))
+                        && ((i <= 0 || j <= 0) || (array[i, j] > array[i - 1, j - 1]))
+                        && ((i >= array.GetLength(0) - 1 || j <= 0) || (array[i, j] > array[i + 1, j - 1]))
+                        && ((i <= 0 || j >= array.GetLength(1) - 1) || (array[i, j] > array[i - 1, j + 1]))
+                        && ((i >= array.GetLength(0) - 1 || j >= array.GetLength(1) - 1) || (array[i, j] > array[i + 1, j + 1]))
                         )
                     {
                         count++;
@@ -150,9 +127,54 @@ namespace Homeworks_Malyutina
             return count;
         }
 
+        //public static int Task5_2(int[,] array)
+        //{
+        //    //Найти количество элементов массива, которые больше всех своих соседей одновременно
+        //    if (array.GetLength(0) == 0 || array.GetLength(1) == 0)
+        //    {
+        //        throw new ArgumentException("Array is empty");
+        //    }
+
+        //    int count = 0;
+        //    for (int i = 0; i < array.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < array.GetLength(1); j++)
+        //        {
+        //            bool isBigger = true;
+        //            for (int a = i - 1; a <= i + 1; a++)
+        //            {
+        //                for (int b = j - 1; b <= j + 1; b++)
+        //                {
+        //                    if (isValidCell(array, a, b) && array[i, j] <= array[a, b] && !(a == i && b == j))
+        //                    {
+        //                        isBigger = false;
+        //                        continue; //нужно чтобы цикл перебрасывался на итерацию по j 
+        //                    }
+        //                }
+        //            }
+        //            if (isBigger)
+        //            {
+        //                count++;
+        //            }
+        //        }
+        //    }
+        //    return count;
+        //}
+
+        //private static bool isValidCell(int[,] array, int a, int b)
+        //{
+        //    if (a >= 0 && b >= 0)
+        //    {
+        //        if (a < array.GetLength(0) && b < array.GetLength(1))
+        //            return true;
+        //    }
+        //    return false;
+        //}
+
         public static int[,] Task6(int[,] array)
         {
             //Отразите массив относительно его главной диагонали
+
             int[,] reversedArray = new int[array.GetLength(1), array.GetLength(0)];
 
             for (int i = 0; i < array.GetLength(0); i++)

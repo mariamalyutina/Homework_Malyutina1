@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Homeworks_Malyutina
 {
-    class ForWhileLoops
+    public static class ForWhileLoops
     {
         public static double Task1(int a, int b)
         {
@@ -28,7 +28,7 @@ namespace Homeworks_Malyutina
             //Пользователь вводит 1 число (A). Вывести все числа от 1 до 1000, которые делятся на A.
             if (a == 0)
             {
-                throw new Exception("Invalid input");
+                throw new ArgumentException("Invalid input");
             }
             a = Math.Abs(a); //если введено отрицательное число
             int [] result = new int[1000 / a];
@@ -46,7 +46,7 @@ namespace Homeworks_Malyutina
             //Пользователь вводит 1 число (A). Найдите количество положительных целых чисел, квадрат которых меньше A.
             if (a <= 0)
             {
-                throw new Exception("Invalid input");
+                throw new ArgumentException("Invalid input");
             }
 
             int count = 0;
@@ -60,9 +60,9 @@ namespace Homeworks_Malyutina
         public static int Task4(int a)
         {
             //Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
-            if (a == 0)
+            if (a == 0 || a == 1)
             {
-                throw new Exception("Input equals 0");
+                throw new ArgumentException("Invalid input");
             }
             a = Math.Abs(a); //если введено отрицательное число
             int result = 1;
@@ -112,7 +112,7 @@ namespace Homeworks_Malyutina
             //является суммой двух предыдущих. Первое и второе считаются равными 1.
             if (a <= 0)
             {
-                throw new Exception("Invalid input");
+                throw new ArgumentException("Invalid input");
             }
             int fibonacci = 1;
             int prev1 = 1;
@@ -129,7 +129,7 @@ namespace Homeworks_Malyutina
             //Пользователь вводит 2 числа. Найти их наибольший общий делитель используя алгоритм Евклида.
             if (a == 0 || b == 0)
             {
-                throw new Exception("Invalid input");
+                throw new ArgumentException("Invalid input");
             }
 
             a = Math.Abs(a); //если введено отрицательное число
@@ -164,7 +164,7 @@ namespace Homeworks_Malyutina
 
             if (a < 0)
             {
-                throw new Exception("Invalid input");
+                throw new ArgumentException("Invalid input");
             }
 
             int left = 0;
@@ -188,7 +188,10 @@ namespace Homeworks_Malyutina
 
         public static double Task8WithDelta(int a)
         {
-
+            if (a < 0)
+            {
+                throw new ArgumentException("Invalid input");
+            }
             double left = 0;
             double right = a;
             double n = a / 2;
@@ -215,8 +218,9 @@ namespace Homeworks_Malyutina
             //Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.
             if (a == 0)
             {
-                throw new Exception("Invalid input");
+                throw new ArgumentException("Invalid input");
             }
+            a = Math.Abs(a); //для отрицательных чисел
             int count = 0;
             while (a != 0)
             {
@@ -237,7 +241,7 @@ namespace Homeworks_Malyutina
             //Возвращается string для случаев с 0 в конце, например 100 -> 001
             if (a == 0)
             {
-                throw new Exception("Invalid input");
+                throw new ArgumentException("Invalid input");
             }
             string reversed = "";
             while (a != 0)
@@ -252,6 +256,15 @@ namespace Homeworks_Malyutina
         {
             //Пользователь вводит целое положительное  число (N). Выведите числа в диапазоне от 1 до N, 
             //сумма четных цифр которых больше суммы нечетных. 
+            if (a <= 0)
+            {
+                throw new ArgumentException("Invalid input");
+            }
+            if (a == 1)
+            {
+                return new int[0];
+            }
+
             string result = "";
             for (int j = 1; j <= a && j < 10; j++)
             {
@@ -320,7 +333,7 @@ namespace Homeworks_Malyutina
                         isMatching = true;
                         break;
                     }
-                    b = b / 10;
+                    a = a / 10;
                 }
             } 
             else

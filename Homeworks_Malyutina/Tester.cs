@@ -6,8 +6,11 @@ namespace Homeworks_Malyutina
     {
         static void Main(string[] args) 
         {
-            int[] array = CreateArray();
-            Console.WriteLine(Arrays.Task1(array));
+            //int[] array = CreateArray();
+            //Console.WriteLine(Arrays.Task1(array));
+            PrintOut2DArray(TwoDArrays.Task6(new int[,] { { 1 },
+            { 5},
+            { 0} }));
 
 
 
@@ -35,7 +38,7 @@ namespace Homeworks_Malyutina
 
         public static int[,] Create2DArray()
         {
-            int[,] array = new int[2, 4];
+            int[,] array = new int[5, 5];
             Random rand = new Random();
             for (int i = 0; i < array.GetLength(0); i++)
             {

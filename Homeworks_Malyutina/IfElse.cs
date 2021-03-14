@@ -27,6 +27,10 @@ namespace Homeworks_Malyutina
         public static string Task2(int X, int Y)
         {
             //Пользователь вводит 2 числа (X и Y). Определить какой четверти принадлежит точка с координатами (X,Y).
+            if (X == 0 && Y == 0)
+            {
+                throw new ArgumentException("Invalid input");
+            }
             if (X > 0)
             {
                 if (Y > 0)
@@ -97,8 +101,9 @@ namespace Homeworks_Malyutina
             //вида, где AX2+BX+C=0.
             if (a == 0)
             {
-                throw new Exception("a == 0");
+                throw new ArgumentException("a == 0");
             }
+            
             double d = b * b - 4 * a * c;
             double x1;
             double x2;
@@ -123,74 +128,81 @@ namespace Homeworks_Malyutina
         {
             //Пользователь вводит двузначное число. Выведите в консоль прописную запись этого числа. Например при вводе “25” 
             //в консоль будет выведено “двадцать пять”.
-
-            int b = a / 10;
-            int c = a % 10;
+            if (Math.Abs(a) < 10 || Math.Abs(a) > 99)
+            {
+                throw new ArgumentException("Нужно ввести двузначное число");
+            }
+            int b = Math.Abs(a) / 10;
+            int c = Math.Abs(a) % 10;
 
             string literal = "";
+            if (a < 0)
+            {
+                literal = "минус ";
+            }
             switch (b)
             {
                 case 1:
                     switch (c)
                     {
                         case 0:
-                            literal = "десять";
+                            literal += "десять";
                             break;
                         case 1:
-                            literal = "одиннадцать";
+                            literal += "одиннадцать";
                             break;
                         case 2:
-                            literal = "двенадцать";
+                            literal += "двенадцать";
                             break;
                         case 3:
-                            literal = "тринадцать";
+                            literal += "тринадцать";
                             break;
                         case 4:
-                            literal = "четырнадцать";
+                            literal += "четырнадцать";
                             break;
                         case 5:
-                            literal = "пятнадцать";
+                            literal += "пятнадцать";
                             break;
                         case 6:
-                            literal = "шестнадцать";
+                            literal += "шестнадцать";
                             break;
                         case 7:
-                            literal = "семнадцать";
+                            literal += "семнадцать";
                             break;
                         case 8:
-                            literal = "восемнадцать";
+                            literal += "восемнадцать";
                             break;
                         case 9:
-                            literal = "девятнадцать";
+                            literal += "девятнадцать";
                             break;
                     }
                     break;
                 case 2:
-                    literal = "двадцать";
+                    literal += "двадцать";
                     break;
                 case 3:
-                    literal = "тридцать";
+                    literal += "тридцать";
                     break;
                 case 4:
-                    literal = "сорок";
+                    literal += "сорок";
                     break;
                 case 5:
-                    literal = "пятьдесят";
+                    literal += "пятьдесят";
                     break;
                 case 6:
-                    literal = "шестьдесят";
+                    literal += "шестьдесят";
                     break;
                 case 7:
-                    literal = "семьдесят";
+                    literal += "семьдесят";
                     break;
                 case 8:
-                    literal = "восемдесят";
+                    literal += "восемдесят";
                     break;
                 case 9:
-                    literal = "девяносто";
+                    literal += "девяносто";
                     break;
             }
-            if (a >= 10 && a <= 19)
+            if (Math.Abs(a) >= 10 && Math.Abs(a) <= 19)
             {
                 return literal;
             }

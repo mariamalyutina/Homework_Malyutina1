@@ -1225,6 +1225,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "Homeworks_Malyutina/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Homeworks_Malyutina.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Homeworks_Malyutina.dll": {}
+        }
       }
     }
   },
@@ -4613,10 +4623,16 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "Homeworks_Malyutina/1.0.0": {
+      "type": "project",
+      "path": "../Homeworks_Malyutina/Homeworks_Malyutina.csproj",
+      "msbuildProject": "../Homeworks_Malyutina/Homeworks_Malyutina.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Homeworks_Malyutina >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "NUnit >= 3.12.0",
       "NUnit3TestAdapter >= 3.16.1"
@@ -4648,7 +4664,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\User\\source\\repos\\Homeworks_Malyutina1\\Homeworks_Malyutina\\Homeworks_Malyutina.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\Homeworks_Malyutina1\\Homeworks_Malyutina\\Homeworks_Malyutina.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -4689,7 +4709,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
